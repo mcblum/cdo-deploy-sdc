@@ -113,10 +113,10 @@ validate_install() {
     export CDO_DOMAIN=$CDO_DOMAIN
     export CDO_TENANT=$CDO_TENANT
     export CDO_BOOTSTRAP_URL=$CDO_BOOTSTRAP_URL
-    export HOME=/usr/local/cdo
+    export HOME=$sdc_home
     
     # Patch common.sh to use absoulte path for needed files...
-    sudo -Eu sdc sed -i '6s/.*/env_dir=$(dirname $(readlink -f $0))/' /usr/local/cdo/bootstrap/common.sh
+    sudo -Eu sdc sed -i '6s/.*/env_dir=$(dirname $(readlink -f $0))/' $sdc_home/bootstrap/common.sh
     
     # Execute bootstrap script
     sudo -Eu sdc ${sdc_home}/bootstrap/bootstrap.sh
